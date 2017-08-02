@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
-Host: www.webcomps.org
+Host: www.polymerbootcamp.com
 
