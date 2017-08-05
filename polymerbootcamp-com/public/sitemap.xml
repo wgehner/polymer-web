@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+		xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://m.appthings.io/en/home/index.html</loc>
+  </url>
+  <url>
+    <loc>https://m.appthings.io/en/clients/index.html</loc>
+  </url>
+  <url>
+    <loc>https://m.appthings.io/en/team/index.html</loc>
+  </url>
+  <url>
+    <loc>https://m.appthings.io/en/contact/</loc>
+  </url>
+
+</urlset>
