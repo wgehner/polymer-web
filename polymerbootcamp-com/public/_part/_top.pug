@@ -1,34 +1,44 @@
 #appbar
 	#appbar--brand(onclick='openDrawer()')
-		span.mui--hidden-xl.mui--hidden-lg.mui--hidden-md &nbsp; ☰  &nbsp;
-			span polymerbootcamp.com
+		table.brand-sm
+			tr
+				td(rowspan='2') &nbsp;
+				td.mui--hidden-xl.mui--hidden-lg.mui--hidden-md.mui--hidden-sm(rowspan='2', width='100px') ☰
+				td(rowspan='2') 
+					img.brand-sm__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
+				td.brand-sm__polymer-cell
+					.brand-sm__polymer Polymer
+			tr.brand-sm__bootcamp-row
+				td.brand-sm__bootcamp-cell
+					.brand-sm__bootcamp Bootcamp
+
 	ul#appbar--menu
 		li
-			a.mui--hidden-xs(href='/index.html') Home
+			a.mui--hidden-xs.mui--hidden-sm(href='/index.html') Home
 		li
-			a.mui--hidden-xs(href='/index.html#section1') Clients
+			a.mui--hidden-xs(href='/index.html#section2') Clients
 		li
-			a.mui--hidden-xs(href='/index.html#section2') Agenda
+			a.mui--hidden-xs(href='/index.html#section3') Agenda
 		li
-			a.mui--hidden-xs(href='/index.html#section3') Dates
+			a.mui--hidden-xs(href='/index.html#section4') Dates
 		li
-			a.mui--hidden-xs(href='/index.html#section4') Contact Us
+			a.mui--hidden-xs(href='/index.html#section5') Contact Us
 
 #sidedrawer(onclick='closeDrawer()')
-	#sidedrawer--brand &nbsp; &nbsp; ☰  &nbsp;
-		span polymerbootcamp.com
+	#sidedrawer--brand
+		span &nbsp; &nbsp; ☰  &nbsp;
 	.mui-divider
 	ul#sidedrawer--menu
 		li
-			a.mui--hidden-xs(href='/index.html') Home
+			a(href='/index.html') Home
 		li
-			a.mui--hidden-xs(href='/index.html#section1') Clients
+			a(href='/index.html#section2') Clients
 		li
-			a.mui--hidden-xs(href='/index.html#section2') Agenda
+			a(href='/index.html#section3') Agenda
 		li
-			a.mui--hidden-xs(href='/index.html#section3') Dates
+			a(href='/index.html#section4') Dates
 		li
-			a.mui--hidden-xs(href='/index.html#section4') Contact Us
+			a(href='/index.html#section5') Contact Us
 script.
 	function openDrawer(px, e) {
 		$('#sidedrawer').css('transform', 'translateX(201px)')

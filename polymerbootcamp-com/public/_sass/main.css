@@ -416,7 +416,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Roboto Slab", sans-serif;
   font-size: 18.2px;
   font-weight: 400;
   line-height: 1.429;
@@ -1829,7 +1829,7 @@ textarea {
   text-transform: uppercase; }
 
 * {
-  font-family: "Titillium Web", sans-serif; }
+  font-family: "Roboto Slab", sans-serif; }
 
 html {
   line-height: 28px;
@@ -1979,7 +1979,7 @@ body {
   width: 100vw; }
 
 #content-wrapper * {
-  font-family: "Titillium Web", sans-serif; }
+  font-family: "Roboto Slab", sans-serif; }
 
 #footer {
   background-color: #9E9E9E;
@@ -2045,7 +2045,7 @@ body, #content-wrapper {
   background-color: #F5F5F5; }
 
 #content-wrapper * {
-  font-family: "Titillium Web", sans-serif; }
+  font-family: "Roboto Slab", sans-serif; }
 
 #appbar {
   background-color: rgba(0, 0, 0, 0.6); }
@@ -2166,6 +2166,81 @@ a {
 #logo__tag {
   width: 215px;
   height: 62px; }
+
+.brand {
+  margin: auto;
+  padding-top: 5px; }
+
+.brand tr, .brand td {
+  margin: 0;
+  padding: 0; }
+
+.brand__logo {
+  width: 100px;
+  height: 70px;
+  vertical-align: center;
+  padding-right: 10px; }
+
+.brand__polymer-cell {
+  height: 20px; }
+
+.brand__polymer {
+  font-size: 32pt;
+  line-height: 15pt;
+  font-weight: bold; }
+
+.brand__bootcamp-cell {
+  height: 20px; }
+
+.brand__bootcamp {
+  font-size: 20pt;
+  line-height: 12pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px; }
+
+.brand-sm {
+  margin: 0;
+  padding-top: 2.5px;
+  width: 142px;
+  height: 44px;
+  line-height: 20px; }
+
+.brand-sm tr, .brand-sm td {
+  margin: 0;
+  padding: 0; }
+
+.brand-sm__logo {
+  width: 60px;
+  height: 42px;
+  vertical-align: center;
+  padding-left: 5px;
+  padding-right: 8px; }
+
+.brand-sm__polymer-row {
+  height: 10px; }
+
+.brand-sm__polymer-cell {
+  height: 10px; }
+
+.brand-sm__polymer {
+  font-size: 16pt;
+  line-height: 3pt; }
+
+.brand-sm__bootcamp-cell {
+  height: 10px;
+  line-height: 3pt; }
+
+.brand-sm__bootcamp-row {
+  height: 10px;
+  line-height: 3pt; }
+
+.brand-sm__bootcamp {
+  font-size: 10pt;
+  line-height: 3pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
 
 .splash__tagline--lg {
   padding-top: 10vh;

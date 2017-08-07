@@ -6,7 +6,7 @@
 //Override _base.scss ============================================================
 $base-line-height: 28px
 $headerH:  $base-line-height * 1.8
-$mui-base-font-family: 'Titillium Web', sans-serif  //Roboto
+$mui-base-font-family: 'Roboto Slab', sans-serif  //Roboto
 
 //_ieFooter overrides ============================================================
 $footerH1:  $base-line-height * 2
@@ -137,6 +137,7 @@ a
 	background-size: cover
 	height: 100vh
 
+// home/splash
 #logo
 	padding-top: 5px
 .logo--ctr
@@ -147,6 +148,70 @@ a
 #logo__tag
 	width: 215px
 	height: 62px
+
+//polymer bootcamp brand
+.brand
+	margin: auto
+	padding-top: 5px
+.brand tr, .brand td
+	margin: 0
+	padding: 0
+.brand__logo
+	width: 100px
+	height: 70px
+	vertical-align: center
+	padding-right: 10px
+.brand__polymer-cell
+	height: 20px
+.brand__polymer
+	font-size: 32pt
+	line-height: 15pt
+	font-weight: bold
+.brand__bootcamp-cell
+	height: 20px
+.brand__bootcamp
+	font-size: 20pt
+	line-height: 12pt
+	font-weight: bold
+	text-transform: uppercase
+	letter-spacing: 2px
+
+//polymer bootcamp brand small
+.brand-sm
+	margin: 0
+	padding-top: 2.5px
+	width: 142px
+	height: 44px
+	line-height: 20px
+.brand-sm tr, .brand-sm td
+	margin: 0
+	padding: 0
+.brand-sm__logo
+	width: 60px
+	height: 42px
+	vertical-align: center
+	padding-left: 5px
+	padding-right: 8px
+.brand-sm__polymer-row	
+	height: 10px	
+.brand-sm__polymer-cell
+	height: 10px
+.brand-sm__polymer
+	font-size: 16pt
+	line-height: 3pt
+	//font-weight: bold
+.brand-sm__bootcamp-cell
+	height: 10px
+	line-height: 3pt
+.brand-sm__bootcamp-row	
+	height: 10px
+	line-height: 3pt
+.brand-sm__bootcamp
+	font-size: 10pt
+	line-height: 3pt
+	font-weight: bold
+	text-transform: uppercase
+	letter-spacing: 1px	
 
 .splash__tagline--lg
 	@extend %tagline--lg

@@ -8,7 +8,9 @@ block main
 	#fullpage
 		.section.active
 			#splash 
-				.mui-container-fluid Home
+				.mui-container-fluid
+				include ./home/index.pug
+					
 				//-iframe(src='/en/home/ani_content.html', id='ani-iframe', width='100%', height='152', frameborder='0', sandbox='allow-scripts' scrolling='no')
 					img.ani__placeholder(src='/en/home/res/ani_placeholder.png', width='100%', height='100%', placeholder='')
 				//-#logo(style='padding-top:15vh') 
