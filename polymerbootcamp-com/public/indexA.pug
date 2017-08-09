@@ -1,41 +1,39 @@
 extends  ./_part/_baseShellA 
 
 block head
-	title appthings.io
+	title polymerbootcamp.com
 	include ./_part/_headerA
-	script(async='', custom-element='amp-iframe', src='https://cdn.ampproject.org/v0/amp-iframe-0.1.js')
-	link(rel='canonical', href='/en/home/index.html')
+	//-script(async='', custom-element='amp-iframe', src='https://cdn.ampproject.org/v0/amp-iframe-0.1.js')
+	link(rel='canonical', href='/index.html')
 
 block main
-	//-.section
-	#splash
-		amp-iframe(src='/en/home/ani_content.html', id='ani-iframe', width='100vw', height='152', frameborder='0', sandbox='allow-scripts' scrolling='no')
-			amp-img.ani__placeholder(src='/en/home/res/ani_placeholder.png', layout='fill', width='205', height='152', placeholder='')
-		.splash__tagline--lg We Make Web Apps Work 
-	//-.section(style='background-color: transparent')
-	#mission
-		.mission__tagline
-			include mission.html
-		amp-iframe(src='/en/home/carousel_contentA.html', id='carousel-iframe--amp', width='100vw' height='87', frameborder='0', sandbox='allow-scripts allow-top-navigation' scrolling='no')
-			amp-img.ani__placeholder(src='/en/home/res/ani_placeholder.png', layout='fill', placeholder='')
-	.news-section
-		#news
-			a(href='#section3')
+	#fullpage
+		#splash
+			a(name='home')
 			.mui-container-fluid
-				include _news.html
-	.seminar-section
-		#seminars
+				.mui-row
+					.mui-col-xs-12.appbar-spacer
+				include ./home/index.pug
+		#clients
+			a(name='clients')
 			.mui-container-fluid
-				include _seminars.html
-	.section
-		#experience
-			.experience__tagline N-tier architectures since 1998
-			.experience__tagline--lg 
-				| Let Our Experience Help Yours. 
-				br
-				| Let's talk about it.
-			.experience__get-started
-				a.mui-btn.mui-btn__180(href='../contact/index.html') CONTACT US 
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				include ./clients/index.pug
+		#dates
+			a(name='dates')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				include ./dates/index.pug
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+		#contact
+			a(name='contact')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				include ./contact/index.pug
 
 block footer
 	include ./_part/_footerA
