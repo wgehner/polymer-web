@@ -143,7 +143,6 @@ a
 //home-splash
 #splash
 	background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.3))
-	//height: 100%
 
 // appthings logo
 .logo
@@ -207,7 +206,6 @@ a
 
 #clients
 	background: linear-gradient(to top, transparent, rgba(0, 0, 0, .3))
-	//height: 100vh
 
 figure
 	margin: auto
@@ -233,158 +231,3 @@ figure
 
 #dates
 	background-color: $accent-color
-
-//#contact
-//	height: 100vh
-
-
-//ff unused
-
-
-.mission__get-started
-	@extend %tagline
-	@extend .mui--hidden-xs	
-	padding-top: 3.5vw
-
-#carousel-iframe
-	overflow: hidden
-	padding-top: 50vh	
-
-.mission__buttons
-	@extend %tagline
-	@extend .mui--hidden-xs
-	@extend .mui--hidden-sm
-	padding-top: 5vw	
-
-#news	
-	color: $primary-text-color
-	line-height: 6vmin
-	font-size: 5vmin
-	margin: 0 3vw
-	padding-top: $headerH*1.2 
-
-#news a
-	color: $primary-color-dark
-	text-decoration: none
-
-#seminars	
-	color: $primary-color-light
-	line-height: 6vmin
-	font-size: 5vmin
-	margin: 0 3vw
-	padding-top: $headerH*1.2 	
-
-#seminars a
-	color: white
-	text-decoration: none
-
-
-
-#experience
-	@extend %background-image
-	background-image: url('/en/experience/res/light768.jpg')
-	background-color: #23548E
-	background-position: center center
-	background-repeat: no-repeat
-	background-size: cover
-	height: 100vh 
-
-.experience__tagline
-	@extend %tagline
-	padding-top: 28vh	
-
-.experience__tagline--lg
-	@extend %tagline--lg
-	padding-top: 15vh
-
-.experience__get-started
-	@extend %tagline
-	padding-top: 15vh
-
-//.experience__get-started > a	
-//	background-color: rgba(255, 255, 255, 0.4)	
-
-
-#services
-	background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.3)), url('/en/services/res/beach768.jpg')
-	background-position: center center
-	background-repeat: no-repeat
-	background-size: cover
-	background-color: #C6B6B6
-	height: 37vw
-
-.services__tagline
-	@extend %tagline
-	padding-top: 4vw
-
-.services__tagline--lg
-	@extend %tagline--lg
-	padding-top: 8vw
-
-.services__get-started
-	@extend %tagline
-	@extend .mui--hidden-xs	
-	padding-top: 3.5vw
-
-
-
-//team
-
-#menuspacer
-	height: $headerH
-	position: absolute
-	top: 0
-	left: 0
-	width: 100%
-
-#wolf
-	extends .img-noborder
-	background-color: #A4A096
-
-#vic
-	extends .img-noborder
-	background-color: #30425A
-
-#article	
-	padding-top: $headerH*1.2 
-
-#article h2	
-	font-size: 20px
-	font-weight: bold
-
-#article h3
-	font-size: 18px	
-	font-weight: bold
-	
-#article *		
-	line-height: 24px
-	font-size: 15.6px
-	font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif
-
-#article code
-    font-family: 'Fira Mono', monospace
-    font-size: $base-line-height * .57
-    color: $secondary-text-color
-
-//abstract base classes for @extend
-%background-image
-	background-position: center center
-	background-repeat: no-repeat
-	background-size: cover
-
-%tagline
-	@extend .mui--text-display1
-	@extend .mui--text-center
-	@extend .mui--no-user-select
-	line-height: 4.2vw
-	font-size: 3vw
-	font-weight: bold
-	color: white
-	margin-left: $base-line-height
-	margin-right: $base-line-height
-
-%tagline--lg
-	@extend %tagline
-	text-transform: uppercase
-	font-size: 5vw
-	line-height: 6.5vw

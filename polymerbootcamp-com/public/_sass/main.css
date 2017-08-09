@@ -1459,7 +1459,7 @@ textarea {
   -o-transition: none;
   transition: none; }
 
-.mui--no-user-select, #appbar--menu li, .mission__get-started, .mission__buttons, .experience__tagline, .experience__get-started, .services__tagline, .services__get-started, .experience__tagline--lg, .services__tagline--lg {
+.mui--no-user-select, #appbar--menu li {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1481,7 +1481,7 @@ textarea {
 .mui--text-right {
   text-align: right; }
 
-.mui--text-center, .mission__get-started, .mission__buttons, .experience__tagline, .experience__get-started, .services__tagline, .services__get-started, .experience__tagline--lg, .services__tagline--lg {
+.mui--text-center {
   text-align: center; }
 
 .mui--text-justify {
@@ -1726,11 +1726,11 @@ textarea {
     display: inline-block; } }
 
 @media (max-width: 543px) {
-  .mui--hidden-xs, .mission__get-started, .mission__buttons, .services__get-started {
+  .mui--hidden-xs {
     display: none; } }
 
 @media (min-width: 544px) and (max-width: 767px) {
-  .mui--hidden-sm, .mission__buttons {
+  .mui--hidden-sm {
     display: none; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -1782,7 +1782,7 @@ textarea {
   font-size: 45px;
   line-height: 48px; }
 
-.mui--text-display1, h1, .mission__get-started, .mission__buttons, .experience__tagline, .experience__get-started, .services__tagline, .services__get-started, .experience__tagline--lg, .services__tagline--lg {
+.mui--text-display1, h1 {
   font-weight: 400;
   font-size: 34px;
   line-height: 40px; }
@@ -2263,124 +2263,3 @@ figure {
 
 #dates {
   background-color: #CDDC39; }
-
-.mission__get-started {
-  padding-top: 3.5vw; }
-
-#carousel-iframe {
-  overflow: hidden;
-  padding-top: 50vh; }
-
-.mission__buttons {
-  padding-top: 5vw; }
-
-#news {
-  color: #212121;
-  line-height: 6vmin;
-  font-size: 5vmin;
-  margin: 0 3vw;
-  padding-top: 60.48px; }
-
-#news a {
-  color: #616161;
-  text-decoration: none; }
-
-#seminars {
-  color: #F5F5F5;
-  line-height: 6vmin;
-  font-size: 5vmin;
-  margin: 0 3vw;
-  padding-top: 60.48px; }
-
-#seminars a {
-  color: white;
-  text-decoration: none; }
-
-#experience {
-  background-image: url("/en/experience/res/light768.jpg");
-  background-color: #23548E;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh; }
-
-.experience__tagline {
-  padding-top: 28vh; }
-
-.experience__tagline--lg {
-  padding-top: 15vh; }
-
-.experience__get-started {
-  padding-top: 15vh; }
-
-#services {
-  background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(rgba(0, 0, 0, 0.3))), url("/en/services/res/beach768.jpg");
-  background: -webkit-linear-gradient(bottom, transparent, rgba(0, 0, 0, 0.3)), url("/en/services/res/beach768.jpg");
-  background: -o-linear-gradient(bottom, transparent, rgba(0, 0, 0, 0.3)), url("/en/services/res/beach768.jpg");
-  background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.3)), url("/en/services/res/beach768.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #C6B6B6;
-  height: 37vw; }
-
-.services__tagline {
-  padding-top: 4vw; }
-
-.services__tagline--lg {
-  padding-top: 8vw; }
-
-.services__get-started {
-  padding-top: 3.5vw; }
-
-#menuspacer {
-  height: 50.4px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%; }
-
-#wolf {
-  background-color: #A4A096; }
-
-#vic {
-  background-color: #30425A; }
-
-#article {
-  padding-top: 60.48px; }
-
-#article h2 {
-  font-size: 20px;
-  font-weight: bold; }
-
-#article h3 {
-  font-size: 18px;
-  font-weight: bold; }
-
-#article * {
-  line-height: 24px;
-  font-size: 15.6px;
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif; }
-
-#article code {
-  font-family: 'Fira Mono', monospace;
-  font-size: 15.96px;
-  color: #757575; }
-
-#experience {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover; }
-
-.mission__get-started, .mission__buttons, .experience__tagline, .experience__get-started, .services__tagline, .services__get-started, .experience__tagline--lg, .services__tagline--lg {
-  line-height: 4.2vw;
-  font-size: 3vw;
-  font-weight: bold;
-  color: white;
-  margin-left: 28px;
-  margin-right: 28px; }
-
-.experience__tagline--lg, .services__tagline--lg {
-  text-transform: uppercase;
-  font-size: 5vw;
-  line-height: 6.5vw; }
