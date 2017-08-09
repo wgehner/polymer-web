@@ -1,0 +1,1 @@
+We hold 'Polymer Best Practices Boot Camp' training workshops, both in-house/onsite and in public. Our Best Practices approaches are grounded in real-life experience and many years of consulting practice (see <a href='https://m.appthings.io' target='blank'>m.appthings.io</a>). This is why we have many satisfied training customers. 

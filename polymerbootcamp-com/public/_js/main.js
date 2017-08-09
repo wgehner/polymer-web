@@ -5,12 +5,11 @@ var TM = {
 
 		//most of these could be in cache.mf
 		return Promise.all([
-			TS.load('https://cdn.jsdelivr.net/jquery.fullpage/2.8.9/jquery.fullpage.min.js')
-			, TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js')
+			TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js')
 			, TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/showup.js')
-			, TS.load('https://cdn.jsdelivr.net/gsap/1.19.0/TweenMax.min.js')
-			, TS.load('https://cdn.jsdelivr.net/gsap/1.19.0/jquery.gsap.min.js')
-			, TS.load('https://rawgit.com/topseed/topseed-turbo/master/release/topseed-turbo-latest.js')
+			//, TS.load('https://cdn.jsdelivr.net/gsap/1.19.0/TweenMax.min.js')
+			//, TS.load('https://cdn.jsdelivr.net/gsap/1.19.0/jquery.gsap.min.js')
+			, TS.load('https://rawgit.com/topseed/topseed-turbo/master/release/topseed-turbo-4.1.js')
 		])
 		.then(TM.libsLoaded)
 	}

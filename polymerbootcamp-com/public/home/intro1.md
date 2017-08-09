@@ -1,0 +1,1 @@
+Polymer is the latest contender for 'best' web component framework. It is built on the _Web Component_ standards agreed to by all major browser vendors. When following best practices, Polymer can help build maintainable and future-safe web apps.

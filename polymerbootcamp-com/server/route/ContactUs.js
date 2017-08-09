@@ -13,9 +13,9 @@ function setNone(res) {
 function sendContact(data) {
 	//name, email, message, phone, subscribe
 	const message = {
-		to: '"Wolfgang Gehner" <wgehner@gmail.com>',
+		to: '"Wolfgang Gehner" <wgehner@appthings.io>',
 		from: '"' + data.name + '" <' + data.email + '>',
-		subject: 'Contact request to appthings.io'
+		subject: 'Contact request to Polymer Bootcamp'
 	}
 	var txt = 'Message from ' + data.name + ' ' + data.email + '\n';
 	txt += 'Phone: '+data.phone+ '\n';

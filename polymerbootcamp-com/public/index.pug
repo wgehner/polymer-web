@@ -6,79 +6,41 @@ block head
 
 block main
 	#fullpage
-		.section.active
-			#splash 
-				.mui-container-fluid
+		#splash
+			a(name='home')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12.appbar-spacer
 				include ./home/index.pug
-					
-				//-iframe(src='/en/home/ani_content.html', id='ani-iframe', width='100%', height='152', frameborder='0', sandbox='allow-scripts' scrolling='no')
-					img.ani__placeholder(src='/en/home/res/ani_placeholder.png', width='100%', height='100%', placeholder='')
-				//-#logo(style='padding-top:15vh') 
-					.logo--ctr
-						img#logo__globe(src='/en/home/res/globeW.svg', alt='appthings logo')
-					.logo--ctr
-						img#logo__tag(src='/en/home/res/appthingsW.svg', alt='appthings')
-				//-.splash__tagline--lg Polymer Training 
-				//-.mission__get-started
-					a.mui-btn.mui-btn__180(href='../contact/') Get Started 
-				//-.mission__tagline
-					include mission.html
-				//-.mission__buttons
-					include _buttons
-			//-.mui-container-fluid
-				.mui--hidden-md.mui--hidden-lg.mui--hidden-xl.image__button--top37vw
-					include _buttons
-				p
-		.section
-			#clients
-				.mission__tagline Clients
-				//-	include mission.html
-				//-iframe(src='/en/home/carousel_content.html', id='carousel-iframe', width='100%' height='84', frameborder='0', sandbox='allow-scripts allow-top-navigation' scrolling='no')
-					img.ani__placeholder(src='/en/home/res/ani_placeholder.png', placeholder='')
-		.section
-			#instructor
-				.mui-container-fluid Instructor
-				//-	include _news.html
-		.section
-			#agenda
-				.mui-container-fluid Agenda here
-				//-	include _seminars.html
-		.section
-			#contact Contact page here
-				//-.experience__tagline N-tier architectures since 1998
-				//-.experience__tagline--lg 
-					| Let Our Experience Help Yours. 
-					br
-					| Let's talk about it.
-				//-.experience__get-started
-					a.mui-btn.mui-btn__180(href='../contact/index.html') CONTACT US 
+		#clients
+			a(name='clients')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				include ./clients/index.pug
+		#dates
+			a(name='dates')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				include ./dates/index.pug
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+		#contact
+			a(name='contact')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				include ./contact/index.pug
 
 	script. 
 		TS.onAppReady(UIinit)
 
 		function UIinit() {
 
-			if($('html').hasClass('fp-enabled')){
-				$.fn.fullpage.destroy('all');
-			}
-
-			$('#fullpage').fullpage({
-				anchors: ['section1', 'section2', 'section3', 'section4', 'section5'],
-				sectionsColor: ['', '', '#C4DC0A', '#607D8B', ''],
-				//fitToSection: false,
-				scrollBar: true	
-			});
 			$('#fullpage').css('opacity','1')
 
 			$.fn.showUp($('#appbar'))
-
-			//var logo = $('#logo'); var globe = $('#logo__globe'); 
-			//var tl = new TimelineMax(); 
-			//tl.to(globe, .25, {autoAlpha:0, scale:0.4}, .5);
-			//tl.to(globe, .04, {autoAlpha:1, scale:1});
-			//tl.to(globe, .15, {autoAlpha:0, scale:0.4});
-			//tl.to(globe, .01, {autoAlpha:1, scale:1});
-			//tl.play();
 		}
 
 block footer

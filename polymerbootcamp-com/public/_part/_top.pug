@@ -10,19 +10,17 @@
 					.brand-sm__polymer Polymer
 			tr.brand-sm__bootcamp-row
 				td.brand-sm__bootcamp-cell
-					.brand-sm__bootcamp Bootcamp
+					.brand-sm__bootcamp Boot Camp
 
 	ul#appbar--menu
 		li
-			a.mui--hidden-xs.mui--hidden-sm(href='/index.html') Home
+			a.mui--hidden-xs.mui--hidden-sm(href='#home') Home
 		li
-			a.mui--hidden-xs(href='/index.html#section2') Clients
+			a.mui--hidden-xs(href='#clients') Clients
 		li
-			a.mui--hidden-xs(href='/index.html#section3') Agenda
+			a.mui--hidden-xs(href='#dates') Agenda+Dates
 		li
-			a.mui--hidden-xs(href='/index.html#section4') Dates
-		li
-			a.mui--hidden-xs(href='/index.html#section5') Contact Us
+			a.mui--hidden-xs(href='#contact') Contact Us
 
 #sidedrawer(onclick='closeDrawer()')
 	#sidedrawer--brand
@@ -30,15 +28,13 @@
 	.mui-divider
 	ul#sidedrawer--menu
 		li
-			a(href='/index.html') Home
+			a(href='#home') Home
 		li
-			a(href='/index.html#section2') Clients
+			a(href='#clients') Clients
 		li
-			a(href='/index.html#section3') Agenda
+			a(href='#dates') Agenda+Dates
 		li
-			a(href='/index.html#section4') Dates
-		li
-			a(href='/index.html#section5') Contact Us
+			a(href='#contact') Contact Us
 script.
 	function openDrawer(px, e) {
 		$('#sidedrawer').css('transform', 'translateX(201px)')

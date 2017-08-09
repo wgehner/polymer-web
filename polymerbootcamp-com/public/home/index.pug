@@ -1,27 +1,45 @@
-.mui-col-xs-12.mui-col-md-3
-	#logo
-		.logo--ctr
-			img#logo__globe(src='/home/res/globe.svg', alt='appthings logo')
-		.logo--ctr
-			img#logo__tag(src='/home/res/appthings.svg', alt='appthings')
-.mui-col-xs-12.mui-col-md-3
-	table.brand
-		tr
-			td(rowspan='2') 
-				img.brand__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
-			td.brand__polymer-cell
-				.brand__polymer Polymer
-		tr
-			td.brand__bootcamp-cell
-				.brand__bootcamp Bootcamp
-
-.mui-col-xs-12.mui-col-md-3
-	table.brand-sm
-		tr
-			td(rowspan='2') 
-				img.brand-sm__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
-			td.brand-sm__polymer-cell
-				.brand-sm__polymer Polymer
-		tr.brand-sm__bootcamp-row
-			td.brand-sm__bootcamp-cell
-				.brand-sm__bootcamp Bootcamp
+.mui-row
+	.mui-col-xs-12.mui-col-md-6.mui-col-lg-4
+		table.mui-table
+			tr
+				td
+					h1.h2b Polymer Best Practices Training
+					include intro1.html
+			tr
+				td
+					table.brand
+						tr
+							td(rowspan='2')
+								img.brand__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
+							td.brand__polymer-cell
+								.brand__polymer Polymer
+						tr
+							td.brand__bootcamp-cell
+								.brand__bootcamp Boot Camp
+	.mui-col-xs-12.mui-col-md-6.mui-col-lg-4
+		table.mui-table
+			tr
+				td
+					a(href='https://m.appthings.io', target='_blank').logo
+						.logo--ctr
+							img.logo__globe(src='/home/res/globe.svg', alt='appthings logo')
+						.logo--ctr
+							img.logo__tag(src='/home/res/appthings.svg', alt='appthings')
+			tr
+				td
+					include intro2.html
+	.mui-col-xs-12.mui-col-md-6.mui-col-lg-4
+		table.mui-table
+			tr
+				td
+					include intro3.html
+			tr
+				td
+					table.trinity
+						tr
+							td 
+								img.trinity__logo--html5(src='/home/res/html5.svg', alt='html logo')
+							td
+								img.trinity__logo--css3(src='/home/res/css3.svg', alt='css logo')
+							td
+								img.trinity__logo--js(src='/home/res/javascript.svg', alt='javascript logo')
