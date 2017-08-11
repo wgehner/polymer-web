@@ -32,6 +32,9 @@ block main
 				.mui-row
 					.mui-col-xs-12 &nbsp;
 				include ./contact/index.pug
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				
 
 	script. 
 		TS.loadOnAppReady('/_js/EventBusiness.js', UIinit)
@@ -47,12 +50,12 @@ block main
 			]).then(function(){
 				sb.addComp('brand-el')
 				sb.addComp('sidedrawer-el')
-				sb.list('eventlist-el')
 				$.fn.showUp($('#appbar'))
+				sb.list('eventlist-el')
 			}).then(function(){
 				TP.loadComp('/_polymerComp/Contactus.html')
 			})
 		}
 
 block footer
-	//-include ../../_part/_footer
+	include ./_part/_footer

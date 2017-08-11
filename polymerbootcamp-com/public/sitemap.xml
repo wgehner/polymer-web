@@ -5,16 +5,7 @@
 		xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://m.appthings.io/en/home/index.html</loc>
-  </url>
-  <url>
-    <loc>https://m.appthings.io/en/clients/index.html</loc>
-  </url>
-  <url>
-    <loc>https://m.appthings.io/en/team/index.html</loc>
-  </url>
-  <url>
-    <loc>https://m.appthings.io/en/contact/</loc>
+    <loc>https://www.polymerbootcamp.com/index.html</loc>
   </url>
 
 </urlset>
