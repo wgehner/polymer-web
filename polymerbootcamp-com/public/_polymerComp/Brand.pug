@@ -1,0 +1,76 @@
+dom-module(id='brand-el')
+	template
+		style.
+			.brand-sm {
+				margin: 0;
+				padding-top: 2.5px;
+				width: 142px;
+				height: 44px;
+				line-height: 20px; }
+
+			.brand-sm tr, .brand-sm td {
+				margin: 0;
+				padding: 0; }
+
+			.brand-sm__logo {
+				width: 60px;
+				height: 42px;
+				vertical-align: center;
+				padding-left: 5px;
+				padding-right: 8px; }
+
+			.brand-sm__polymer-row {
+				height: 10px; }
+
+			.brand-sm__polymer-cell {
+				height: 10px; }
+
+			.brand-sm__polymer {
+				font-family: 'Roboto Slab', sans-serif;
+				font-size: 16pt;
+				line-height: 3pt; }
+
+			.brand-sm__bootcamp-cell {
+				height: 10px;
+				line-height: 3pt; }
+
+			.brand-sm__bootcamp-row {
+				height: 10px;
+				line-height: 3pt; }
+
+			.brand-sm__bootcamp {
+				font-family: 'Roboto Slab', sans-serif;
+				font-size: 10pt;
+				line-height: 3pt;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: .05em;
+				white-space: nowrap; }
+		
+		#appbar--brand(on-click='openDrawer')
+			table.brand-sm
+				tr
+					td(rowspan='2') &nbsp;
+					td.mui--hidden-xl.mui--hidden-lg.mui--hidden-md.mui--hidden-sm(rowspan='2', width='100px') ☰
+					td(rowspan='2') 
+						img.brand-sm__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
+					td.brand-sm__polymer-cell
+						.brand-sm__polymer Polymer
+				tr.brand-sm__bootcamp-row
+					td.brand-sm__bootcamp-cell
+						.brand-sm__bootcamp Boot Camp
+	script.
+		Polymer({
+			is: 'brand-el'
+
+			, init: function(_blx) {
+				this.blx = _blx 
+			}
+
+			, openDrawer: function(e){
+				if (this.blx != null) //blx not required when component doesn't broadcast
+				{
+					this.blx.emit('openDrawer', e)
+				}
+			}
+		})

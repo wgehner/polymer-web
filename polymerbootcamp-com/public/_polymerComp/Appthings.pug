@@ -1,0 +1,28 @@
+dom-module(id='appthings-el')
+	template
+		style.
+			.logo {
+				padding-top: 5px;
+				margin: auto;
+			}
+			.logo--ctr {
+				text-align: center;
+			}
+			.logo__globe {
+				width: 135px;
+				height: 83px;
+			}
+			.logo__tag {
+				width: 215px;
+				height: 62px;	
+			}
+		a(href='https://m.appthings.io', target='_blank').logo
+			.logo--ctr
+				img.logo__globe(src='/home/res/globe.svg', alt='appthings logo')
+			.logo--ctr
+				img.logo__tag(src='/home/res/appthings.svg', alt='appthings')
+
+	script.
+		Polymer({
+			is: 'appthings-el'
+		})

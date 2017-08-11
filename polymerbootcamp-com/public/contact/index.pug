@@ -2,24 +2,8 @@
 	.mui-col-xs-12
 		h2.h2b Contact Us
 .mui-row
-	.mui-col-xs-12.mui-col-md-6
-		form#contact
-			.mui-textfield
-				input(name='data.name', type='text', required='')
-				label Name
-			.mui-textfield
-				input(name='data.email', type='email', required='')
-				label Email
-			.mui-textfield
-				input(name='data.phone', type='text', required='')
-				label Phone #
-			.mui-textfield
-				textarea(name='data.message', type='text', required='')
-				label Message
-			.mui-checkbox
-				input(name='data.subscribe', type='checkbox')
-				label Check to receive email updates
-			button#save.mui-btn.mui-btn--raised.mui--pull-right(type='submit') Submit
+	.mui-col-xs-12.mui-col-md-6(style='height:384px')
+		contactus-el
 	.mui-col-xs-12.mui-col-md-6
 		p
 		include services.html

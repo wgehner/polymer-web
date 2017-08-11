@@ -1,17 +1,5 @@
 #appbar
-	#appbar--brand(onclick='openDrawer()')
-		table.brand-sm
-			tr
-				td(rowspan='2') &nbsp;
-				td.mui--hidden-xl.mui--hidden-lg.mui--hidden-md.mui--hidden-sm(rowspan='2', width='100px') ☰
-				td(rowspan='2') 
-					img.brand-sm__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
-				td.brand-sm__polymer-cell
-					.brand-sm__polymer Polymer
-			tr.brand-sm__bootcamp-row
-				td.brand-sm__bootcamp-cell
-					.brand-sm__bootcamp Boot Camp
-
+	brand-el
 	ul#appbar--menu
 		li
 			a.mui--hidden-xs.mui--hidden-sm(href='#home') Home
@@ -22,25 +10,4 @@
 		li
 			a.mui--hidden-xs(href='#contact') Contact Us
 
-#sidedrawer(onclick='closeDrawer()')
-	#sidedrawer--brand
-		span &nbsp; &nbsp; ☰  &nbsp;
-	.mui-divider
-	ul#sidedrawer--menu
-		li
-			a(href='#home') Home
-		li
-			a(href='#clients') Clients
-		li
-			a(href='#dates') Agenda+Dates
-		li
-			a(href='#contact') Contact Us
-script.
-	function openDrawer(px, e) {
-		$('#sidedrawer').css('transform', 'translateX(201px)')
-	}
-	function closeDrawer(e) {
-		$('#sidedrawer').css('transform', 'translateX(0px)')
-	}			
-				
-
+sidedrawer-el

@@ -3,12 +3,17 @@ var TM = {
 	loadLibs: function(){
 		console.log('loadLibs called')
 
-		//most of these could be in cache.mf
 		return Promise.all([
-			TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js')
-			, TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/showup.js')
-			//, TS.load('https://cdn.jsdelivr.net/gsap/1.19.0/TweenMax.min.js')
-			//, TS.load('https://cdn.jsdelivr.net/gsap/1.19.0/jquery.gsap.min.js')
+			TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/showup.js')
+			, TS.load('//cdn.rawgit.com/topseed/topseed-turbo/master/webComps/tw0-1.0.js').then(function(){TW.init()}) //Standard Polyfills and Helper
+			, TS.load('//cdn.rawgit.com/topseed/topseed-turbo/master/webComps/tp1-1.0.js') //Late-loader Helper for Polymer components
+			, TS.load('/bower_components/webcomponentsjs/HTMLImports.min.js') //Polyfill used in late-loader
+			, TS.load('/bower_components/polymer/polymer.html') //Support for Polymer (1.9.3)
+			, TS.load('/_js/BLX.js') //Support for Message Bus
+			, TS.load('/_js/BDS.js') //Support for Business Data Services (fetch etc)
+			, TS.load('/_polymerComp/Brand.html')
+			, TS.load('/_polymerComp/Bootcamp.html')
+			, TS.load('/_polymerComp/Appthings.html')
 			, TS.load('https://rawgit.com/topseed/topseed-turbo/master/release/topseed-turbo-4.1.js')
 		])
 		.then(TM.libsLoaded)
@@ -25,8 +30,9 @@ var TM = {
 			}
 			if(TT.PAGE == evt.typ)  {
 				$(TT.ScontentID).html(evt.$new)
-			$('#appbar').removeClass('appbar-hide')
-			$('#appbar').addClass('appbar-show')			}
+				$('#appbar').removeClass('appbar-hide')
+				$('#appbar').addClass('appbar-show')
+			}
 		})
 	}
 

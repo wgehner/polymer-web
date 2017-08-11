@@ -34,13 +34,24 @@ block main
 				include ./contact/index.pug
 
 	script. 
-		TS.onAppReady(UIinit)
+		TS.loadOnAppReady('/_js/EventBusiness.js', UIinit)
 
 		function UIinit() {
-
-			//$('#fullpage').css('opacity','1')
-
-			$.fn.showUp($('#appbar'))
+			var sb = EventBusiness()
+			Promise.all([
+				TP.loadComp('/_polymerComp/Brand.html')
+				, TP.loadComp('/_polymerComp/Bootcamp.html')
+				, TP.loadComp('/_polymerComp/Appthings.html')
+				, TP.loadComp('/_polymerComp/Sidedrawer.html')
+				, TP.loadComp('/_polymerComp/Eventlist.html')
+			]).then(function(){
+				sb.addComp('brand-el')
+				sb.addComp('sidedrawer-el')
+				sb.list('eventlist-el')
+				$.fn.showUp($('#appbar'))
+			}).then(function(){
+				TP.loadComp('/_polymerComp/Contactus.html')
+			})
 		}
 
 block footer

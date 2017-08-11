@@ -1,0 +1,65 @@
+dom-module(id='contactus-el')
+	template
+		form#contactform
+			.mui-textfield
+				input(name='data.name', type='text', required='')
+				label Name
+			.mui-textfield
+				input(name='data.email', type='email', required='')
+				label Email
+			.mui-textfield
+				input(name='data.phone', type='text', required='')
+				label Phone #
+			.mui-textfield
+				textarea(name='data.message', type='text', required='')
+				label Message
+			.mui-checkbox
+				input(name='data.subscribe', type='checkbox')
+				label Check to receive email updates
+			button#save.mui-btn.mui-btn--raised.mui--pull-right(type='submit') Submit
+
+	script.
+		var contactusEl
+		Polymer({
+			is: 'contactus-el'
+
+			, created: function() {
+				contactusEl = this
+				Promise.all([
+					TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js')
+					, TS.load('https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.8/sweetalert2.min.css')
+					, TS.load('https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.8/sweetalert2.min.js')
+				]).then(contactusEl.loadedLib)
+			}
+
+			, loadedLib: function() {
+				$('#contactform').jsForm({
+					data: {email: '', message: ''}
+				})
+
+				$('#contactform').submit(function(ev){
+					ev.preventDefault() 
+					var obj = $(this).jsForm('get')
+					if (!obj) { // no object means some fields are invalid
+						alert('Please fill out the form correctly!')
+						return
+					}
+					contactusEl.save(obj)
+				})
+			}
+
+			, save: function(obj){
+				obj.source = 'polymerbootcamp.com'
+				fetch('/contactus/mail/', {
+					method: 'post', body: JSON.stringify(obj),
+					headers: {'Content-Type': 'application/json'}
+				})
+				.then( function(response) {
+					return response.json()
+				})
+				.then( function(text) {
+					swal('Thank you. Your request was submitted.')
+					$('#contactform').jsForm('clear');
+				})
+			}
+		})

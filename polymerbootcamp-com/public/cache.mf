@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # load stable assets once and freeze on client, even if asset changes, it won't ping
-# refresh 7/27/2017
+# refresh 8/9/2017
 
 #index assets
 https://m.appthings.io/favicon.ico
@@ -13,16 +13,21 @@ https://m.appthings.io/favicon.ico
 # https://cdn.rawgit.com/topseed/topseed-turbo/master/release/topseed-turbo-4.0.js
 # https://cdn.jsdelivr.net/jquery.fullpage/2.8.9/jquery.fullpage.min.js
 
-https://fonts.googleapis.com/css?family=Titillium+Web
-https://cdn.jsdelivr.net/gsap/1.19.0/TweenMax.min.js
-https://cdn.jsdelivr.net/gsap/1.19.0/jquery.gsap.min.js
+https://fonts.googleapis.com/css?family=Roboto+Slab:300,500
+
+# https://www.polymerbootcamp.com/_polymerComp/BrandEl.html
+# https://www.polymerbootcamp.com/_polymerComp/SidedrawerEl.html
+https://www.polymerbootcamp.com/_polymerComp/BootcampEl.html
+https://www.polymerbootcamp.com/_polymerComp/AppthingsEl.html
 
 #page assets:
-https://m.appthings.io/en/home/res/road-sm.jpg
-https://m.appthings.io/en/services/res/beach768.jpg
-https://m.appthings.io/en/clients/res/city768.jpg
-https://m.appthings.io//en/experience/res/light768.jpg
-https://m.appthings.io//en/team/res/wolf.jpg
+https://www.polymerbootcamp.com/home/res/polymer-logo.svg
+https://www.polymerbootcamp.com/home/res/globe.svg
+https://www.polymerbootcamp.com/home/res/appthings.svg
+https://www.polymerbootcamp.com/home/res/html5.svg
+https://www.polymerbootcamp.com/home/res/css3.svg
+https://www.polymerbootcamp.com/home/res/javascript.svg
+https://www.polymerbootcamp.com/clients/res/cnbc-sm.jpg
 
 NETWORK:
 *

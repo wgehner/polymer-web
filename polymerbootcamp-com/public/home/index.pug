@@ -6,25 +6,13 @@
 					h1.h2b Polymer Best Practices Training
 					include intro1.html
 			tr
-				td
-					table.brand
-						tr
-							td(rowspan='2')
-								img.brand__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
-							td.brand__polymer-cell
-								.brand__polymer Polymer
-						tr
-							td.brand__bootcamp-cell
-								.brand__bootcamp Boot Camp
+				td(height='115px')
+					bootcamp-el
 	.mui-col-xs-12.mui-col-md-6.mui-col-lg-4
 		table.mui-table
 			tr
-				td
-					a(href='https://m.appthings.io', target='_blank').logo
-						.logo--ctr
-							img.logo__globe(src='/home/res/globe.svg', alt='appthings logo')
-						.logo--ctr
-							img.logo__tag(src='/home/res/appthings.svg', alt='appthings')
+				td(height='178px')
+					appthings-el
 			tr
 				td
 					include intro2.html
@@ -37,7 +25,7 @@
 				td
 					table.trinity
 						tr
-							td 
+							td
 								img.trinity__logo--html5(src='/home/res/html5.svg', alt='html logo')
 							td
 								img.trinity__logo--css3(src='/home/res/css3.svg', alt='css logo')
