@@ -1,0 +1,60 @@
+dom-module(id='conference-el')
+	template
+		style.
+			.conference {
+				margin: auto;
+				padding-top: 5px;
+				padding-bottom: 10px;
+				border-collapse: collapse;
+				border-spacing: 0px;
+			}
+			.conference tr, .conference td {
+				margin: 0;
+				padding: 0;
+			}
+			.conference__logo {
+				width: 70px;
+				height: 50px;
+				padding-right: 6px;
+			}
+			.conference__polymer-cell {
+				vertical-align: top;
+				line-height: 1.2;
+
+				
+			}
+			.conference__polymer {
+				font-family: 'Roboto Slab', sans-serif;
+				font-size: 38pt;
+				baseline-height: 20pt;
+				font-weight: bold;
+				margin-top: -9px;
+			}
+			.conference__conference-cell {
+				vertical-align: middle;
+				height: 22px;
+			}
+			.conference__conference {
+				font-family: 'Roboto Slab', sans-serif;
+				font-size: 20pt;
+				line-height: 12pt;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: .10em;
+				white-space: nowrap;
+			}
+
+		table.conference
+			tr
+				td
+					img.conference__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
+				td.conference__polymer-cell
+					.conference__polymer Polymer
+			tr
+				td.conference__conference-cell(colspan='2')
+					.conference__conference The Conference
+
+	script.
+		Polymer({
+			is: 'conference-el'
+		})

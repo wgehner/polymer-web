@@ -1,0 +1,31 @@
+extends  ../_part/_baseShell 
+
+block head
+	title Polymer - THE CONFERENCE
+	//-link(rel='preload', href='/en/clients/res/city768.jpg' as='image')
+	include ../_part/_header
+
+block main
+	#home
+		.mui-container-fluid
+			.mui-row
+				.mui-col-xs-12.appbar-spacer
+			.mui-row
+				.mui-col-xs-12
+					center Coming soon: 
+					p
+					p
+			.mui-row
+				.mui-col-xs-12
+					table.brand
+						tr
+							td
+								img.brand__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
+							td.brand__polymer-cell
+								.brand__polymer Polymer
+						tr
+							td.brand__conference-cell(colspan='2')
+								.brand__conference The Conference
+
+block footer
+	include  ../_part/_footer

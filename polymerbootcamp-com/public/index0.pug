@@ -1,0 +1,62 @@
+extends  ./_part/_baseShell
+
+block head
+	title polymerbootcamp.com
+	include ./_part/_header
+
+block main
+	#fullpage
+		#splash
+			a(name='home')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12.appbar-spacer
+				include ./home/index.pug
+		#clients
+			a(name='clients')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				include ./clients/index.pug
+		#dates
+			a(name='dates')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				include ./dates/index.pug
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+		#contact
+			a(name='contact')
+			.mui-container-fluid
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				include ./contact/index.pug
+				.mui-row
+					.mui-col-xs-12 &nbsp;
+				
+
+	script. 
+		TS.loadOnAppReady('/_js/EventBusiness.js', UIinit)
+
+		function UIinit() {
+			var sb = EventBusiness()
+			Promise.all([
+				TP.loadComp('/_polymerComp/Brand.html')
+				, TP.loadComp('/_polymerComp/Conference.html')
+				, TP.loadComp('/_polymerComp/Bootcamp.html')
+				, TP.loadComp('/_polymerComp/Appthings.html')
+				, TP.loadComp('/_polymerComp/Sidedrawer.html')
+				, TP.loadComp('/_polymerComp/Eventlist.html')
+			]).then(function(){
+				sb.addComp('brand-el')
+				sb.addComp('sidedrawer-el')
+				$.fn.showUp($('#appbar'))
+				sb.list('eventlist-el')
+			}).then(function(){
+				TP.loadComp('/_polymerComp/Contactus.html')
+			})
+		}
+
+block footer
+	include ./_part/_footer

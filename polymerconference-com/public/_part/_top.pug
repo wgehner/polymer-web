@@ -1,0 +1,26 @@
+#appbar
+	#appbar--brand(on-click='openDrawer')
+		table.brand-sm
+			tr
+				td(rowspan='2') &nbsp;
+				td.mui--hidden-xl.mui--hidden-lg.mui--hidden-md.mui--hidden-sm(rowspan='2', width='100px') ☰
+				td
+					img.brand-sm__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
+				td.brand-sm__polymer-cell
+					.brand-sm__polymer Polymer
+			tr.brand-sm__conference-row
+				td.brand-sm__conference-cell(colspan='2')
+					.brand-sm__conference The Conference
+	ul#appbar--menu
+		li
+			a.mui--hidden-xs.mui--hidden-sm(href='./home/') Home
+		li
+			a.mui--hidden-xs(href='./speakers/') Speakers
+		li
+			a.mui--hidden-xs(href='./agenda/') Agenda
+		li
+			a.mui--hidden-xs(href='./book/') Book
+		li
+			a.mui--hidden-xs(href='./contact/') Contact Us
+
+sidedrawer-el

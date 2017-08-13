@@ -1,0 +1,29 @@
+dom-module(id='sidedrawer-el')
+	template
+		#sidedrawer(on-click='closeDrawer')
+			#sidedrawer--brand
+				span &nbsp; &nbsp; ☰  &nbsp;
+			.mui-divider
+			ul#sidedrawer--menu
+				li
+					a(href='#home') Home
+				li
+					a(href='#clients') Clients
+				li
+					a(href='#dates') Agenda+Dates
+				li
+					a(href='#contact') Contact Us
+	script.
+		Polymer({
+			is: 'sidedrawer-el'
+
+			, init: function(_blx) {
+				_blx.on('openDrawer', function(){
+					$('#sidedrawer').css('transform', 'translateX(201px)')
+				})
+			}
+
+			, closeDrawer: function() {
+				$('#sidedrawer').css('transform', 'translateX(0px)')
+			}
+		})

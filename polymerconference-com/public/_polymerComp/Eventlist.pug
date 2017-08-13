@@ -1,0 +1,24 @@
+dom-module(id='eventlist-el')
+	template
+		table.mui-table
+			template(is='dom-repeat', items='[[items]]')
+				tr
+					td 
+						b {{item.dateStr}}: 
+						span {{item.location}}
+					td 
+						a.mui-btn.mui-btn--raised(on-click='book') Book Now!
+
+	script.
+		Polymer({
+			is: 'eventlist-el'
+
+			, list: function(items) {
+				this.items = items
+			}
+
+			, book: function(e){
+				window.open(e.model.item.book, "_blank")
+				return false		
+			}
+		})

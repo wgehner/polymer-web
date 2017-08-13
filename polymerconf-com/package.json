@@ -1,0 +1,12 @@
+{	"name" : "webcomps-orgg"
+	,"version" : "1.0.1"
+	, "description": "Best Practices for Standard Web Components"
+	, "repository": { "type": "git", "url" : "https://github.com/wgehner/webcomps-org.git"}
+	, "license": "SEE LICENSE IN LICENSE.md"
+	, "engines": { "npm" : ">=5", "node": ">=8" }
+	, "dependencies": { 
+		"express": ">=4.1"
+		,"topseed-utils": ">=25.0.1"
+
+	}
+}

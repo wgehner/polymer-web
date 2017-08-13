@@ -1,0 +1,29 @@
+CACHE MANIFEST
+# load stable assets once and freeze on client, even if asset changes, it won't ping
+# refresh 8/13/2017
+
+#index assets
+https://www.polymerconference.com/favicon.png
+# https://cdn.jsdelivr.net/jquery/3.1.1/jquery.min.js #interferes w/async load
+# https://cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-5.2.js #same 
+# https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/bowser.min.js
+# https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/flyd.min.js
+# https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/js.cookie.min.js
+# https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js
+# https://cdn.rawgit.com/topseed/topseed-turbo/master/release/topseed-turbo-4.0.js
+# https://cdn.jsdelivr.net/jquery.fullpage/2.8.9/jquery.fullpage.min.js
+
+https://fonts.googleapis.com/css?family=Roboto+Slab:300,500
+
+#page assets:
+https://www.polymerconference.com/home/res/polymer-logo.svg
+https://www.polymerconference.com/home/res/globe.svg
+https://www.polymerconference.com/home/res/appthings.svg
+https://www.polymerconference.com/home/res/html5.svg
+https://www.polymerconference.com/home/res/css3.svg
+https://www.polymerconference.com/home/res/javascript.svg
+https://www.polymerconference.com/clients/res/cnbc-sm.jpg
+
+NETWORK:
+*
+

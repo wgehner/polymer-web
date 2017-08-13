@@ -1,0 +1,25 @@
+{	"name" : "polymerbootcamp-com"
+	,"version" : "1.0.1"
+	, "description": "Best Practices for Polymer"
+	, "repository": { "type": "git", "url" : "https://github.com/wgehner/polymer-web.git"}
+	, "license": "SEE LICENSE IN LICENSE.md"
+	, "engines": { "npm" : ">=5", "node": ">=8" }
+	, "devDependencies": {
+		"gulp": ">=3.9.1",
+		"gulp-nodemon": ">=2.2.1"
+	}
+	, "dependencies": { 
+		"body-parser": ">=1.1",
+		"cheerio": ">=0.2",
+		"compression": ">=1.6",
+		"cors": ">=2.8",
+		"express": ">=4.15",
+		"flyd": ">=0.2.4",
+		"is_js": ">=0.9",
+		"mailgun-js": ">=0.8", 
+		"moment": ">=2.1",
+		"node-fetch": ">=1.6",
+		"pug": ">=2.0.0-rc.2",
+		"topseed-utils": ">=25.0.1"
+	}
+}

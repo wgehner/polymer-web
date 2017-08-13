@@ -1,0 +1,54 @@
+dom-module(id='bootcamp-el')
+	template
+		style.
+			.brand {
+				margin: auto;
+				padding-top: 5px;
+				padding-bottom: 10px;
+			}
+			.brand tr, .brand td {
+				margin: 0;
+				padding: 0;
+			}
+			.brand__logo {
+				width: 100px;
+				height: 70px;
+				vertical-align: center;
+				padding-right: 10px;
+			}
+			.brand__polymer-cell {
+				height: 20px;
+			}
+			.brand__polymer {
+				font-family: 'Roboto Slab', sans-serif;
+				font-size: 32pt;
+				line-height: 15pt;
+				font-weight: bold;
+			}
+			.brand__bootcamp-cell {
+				height: 20px;
+			}
+			.brand__bootcamp {
+				font-family: 'Roboto Slab', sans-serif;
+				font-size: 20pt;
+				line-height: 12pt;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: .07em;
+				white-space: nowrap;
+			}
+
+		table.brand
+			tr
+				td(rowspan='2')
+					img.brand__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
+				td.brand__polymer-cell
+					.brand__polymer Polymer
+			tr
+				td.brand__bootcamp-cell
+					.brand__bootcamp Boot Camp
+
+	script.
+		Polymer({
+			is: 'bootcamp-el'
+		})
