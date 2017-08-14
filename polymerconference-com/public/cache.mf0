@@ -16,13 +16,12 @@ https://www.polymerconference.com/favicon.png
 https://fonts.googleapis.com/css?family=Roboto+Slab:300,500
 
 #page assets:
-https://www.polymerconference.com/home/res/polymer-logo.svg
+https://www.polymerconference.com/home/res/polymer-conference.svg
 https://www.polymerconference.com/home/res/globe.svg
 https://www.polymerconference.com/home/res/appthings.svg
-https://www.polymerconference.com/home/res/html5.svg
-https://www.polymerconference.com/home/res/css3.svg
-https://www.polymerconference.com/home/res/javascript.svg
-https://www.polymerconference.com/clients/res/cnbc-sm.jpg
+# https://www.polymerconference.com/home/res/html5.svg
+# https://www.polymerconference.com/home/res/css3.svg
+# https://www.polymerconference.com/home/res/javascript.svg
 
 NETWORK:
 *
