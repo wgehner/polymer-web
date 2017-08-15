@@ -23,15 +23,19 @@ var TM = {
 		
 		TS.signalAppReady()
 
-		TT.ScontentID = '#content-wrapper'
+		TT.ScontentID = '#content-wrapper' //--fixed'
 		TT.handle(function(evt) {
 			if(TT.PRE == evt.typ)  {
-				//$('#content-wrapper').fadeTo(100,.2)
+				$('#content-wrapper').fadeTo(100,.2)
 			}
 			if(TT.PAGE == evt.typ)  {
 				$(TT.ScontentID).html(evt.$new)
 				$('#appbar').removeClass('appbar-hide')
 				$('#appbar').addClass('appbar-show')
+				//$('#content-wrapper').fadeTo(0,.5)
+				//$('#content-wrapper').css('opacity', '0')
+				//$('#content-wrapper--fixed').css('opacity', '1')
+				$('#content-wrapper').fadeTo(100,1)
 			}
 		})
 	}

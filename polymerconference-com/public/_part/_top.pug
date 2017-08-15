@@ -1,9 +1,10 @@
 #appbar
-	#appbar--brand(on-click='openDrawer')
+	#appbar--brand(onclick='document.querySelector("sidedrawer-el").openDrawer()')
 		table.brand-sm
 			tr
 				td(rowspan='2') &nbsp;
-				td.mui--hidden-xl.mui--hidden-lg.mui--hidden-md.mui--hidden-sm(rowspan='2', width='100px') ☰
+				td.mui--hidden-xl.mui--hidden-lg.mui--hidden-md.mui--hidden-sm.burger(rowspan='2') ☰
+				td(rowspan='2') &nbsp;
 				td
 					img.brand-sm__logo(src='/home/res/polymer-logo.svg', alt='polymer logo')
 				td.brand-sm__polymer-cell
@@ -13,14 +14,38 @@
 					.brand-sm__conference The Conference
 	ul#appbar--menu
 		li
-			a.mui--hidden-xs.mui--hidden-sm(href='/home/') Home
+			//-a.mui--hidden-xs.mui--hidden-sm(href='/home/') Home
+			a(href='/home/') Home
 		li
-			a.mui--hidden-xs(href='/speakers/') Speakers
+			a(href='/speakers/') Speakers
 		li
 			a.mui--hidden-xs(href='/agenda/') Agenda
 		li
 			a.mui--hidden-xs(href='/book/') Book
 		li
 			a.mui--hidden-xs(href='/contact/') Contact Us
-
 sidedrawer-el
+	ul#sidedrawer--menu
+		li
+			a(href='/home/') Home
+		li
+			a(href='/speakers/') Speakers
+		li
+			a(href='/agenda/') Agenda
+		li
+			a(href='/book/') Book
+		li
+			a(href='/contact/') Contact Us	
+
+script.
+	TS.loadOnAppReady('/_js/EventBusiness.js', UIinit)
+
+	function UIinit() {
+		Promise.all([
+			TP.loadComp('/_polymerComp/Sidedrawer.html')
+		]).then(function(){
+			var sb = EventBusiness()
+			sb.addComp('sidedrawer-el')
+			$.fn.showUp($('#appbar'))
+		})
+	}

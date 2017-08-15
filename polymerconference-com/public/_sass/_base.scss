@@ -121,6 +121,13 @@ body {
 	width: 100vw;
 }
 
+#content-wrapper--fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+
+}
+
 //#content-wrapper * {
 //	font-family: $mui-base-font-family;
 //}

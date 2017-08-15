@@ -1978,6 +1978,11 @@ body {
   margin-top: 0;
   width: 100vw; }
 
+#content-wrapper--fixed {
+  position: fixed;
+  top: 0;
+  left: 0; }
+
 #footer {
   background-color: #9E9E9E;
   color: #212121;
@@ -2035,14 +2040,15 @@ body {
   #footer_div {
     height: 75.6px; } }
 
+.burger {
+  font-size: 28px; }
+
 .brand-sm {
   margin: 0;
   padding-top: 2.5px;
   width: 142px;
   height: 44px;
-  line-height: 20px;
-  border-collapse: collapse;
-  border-spacing: 0px; }
+  line-height: 20px; }
 
 .brand-sm tr, .brand-sm td {
   margin: 0;
@@ -2052,27 +2058,28 @@ body {
   width: 35px;
   height: 25px;
   vertical-align: center;
-  padding-left: 5px;
   padding-right: 3px; }
 
 .brand-sm__polymer-row {
   height: 10px; }
 
 .brand-sm__polymer-cell {
-  height: 10px; }
+  vertical-align: top;
+  line-height: 1.2; }
 
 .brand-sm__polymer {
   font-family: 'Roboto Slab', sans-serif;
   font-size: 16pt;
-  line-height: 3pt; }
+  line-height: 3pt;
+  margin-top: 10px; }
 
 .brand-sm__conference-cell {
   padding-left: 5px;
-  height: 10px;
+  height: 8px;
   line-height: 3pt; }
 
 .brand-sm__conference-row {
-  height: 10px;
+  height: 8px;
   line-height: 3pt; }
 
 .brand-sm__conference {
@@ -2186,6 +2193,9 @@ body, #content-wrapper {
 
 #sidedrawer a {
   font-family: 'Roboto Slab', sans-serif; }
+
+#sidedrawer--menu {
+  display: none; }
 
 a {
   color: #212121;

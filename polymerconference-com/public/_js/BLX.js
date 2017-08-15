@@ -48,7 +48,6 @@ var BLX = Class.extend({ //IE11-compatible testable 'middle layer' Page Business
 			TT.loadPg(url)
 		}
 	 }
-	
 
 })//'class'
 
