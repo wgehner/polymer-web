@@ -1978,8 +1978,8 @@ body {
   margin-top: 0;
   width: 100vw; }
 
-#content-wrapper--fixed {
-  position: fixed;
+#content-wrapper-b {
+  position: absolute;
   top: 0;
   left: 0; }
 

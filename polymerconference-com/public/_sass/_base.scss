@@ -119,10 +119,13 @@ body {
 	background-color: $primary-color-text;
 	margin-top: 0; //$headerH;
 	width: 100vw;
+	//position: fixed; //for split transition, ff
+	//top: 0;
+	//left: 0;
 }
 
-#content-wrapper--fixed {
-	position: fixed;
+#content-wrapper-b {
+	position: absolute;
 	top: 0;
 	left: 0;
 
