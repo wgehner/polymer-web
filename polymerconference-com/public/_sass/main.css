@@ -2218,7 +2218,7 @@ a {
 .appbar-spacer {
   height: 60.48px; }
 
-#home {
+.home {
   background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(rgba(0, 0, 0, 0.3)));
   background: -webkit-linear-gradient(bottom, transparent, rgba(0, 0, 0, 0.3));
   background: -o-linear-gradient(bottom, transparent, rgba(0, 0, 0, 0.3));

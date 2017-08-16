@@ -1,5 +1,5 @@
 #appbar
-	#appbar--brand(onclick='document.querySelector("sidedrawer-el").openDrawer()')
+	#appbar--brand
 		table.brand-sm
 			tr
 				td(rowspan='2') &nbsp;
@@ -44,8 +44,7 @@ script.
 		Promise.all([
 			TP.loadComp('/_polymerComp/Sidedrawer.html')
 		]).then(function(){
-			//var sb = EventBusiness()
-			//sb.addComp('sidedrawer-el')
 			$.fn.showUp($('#appbar'))
+			$('#appbar--brand').click(function(){document.querySelector("sidedrawer-el").openDrawer()})
 		})
 	}

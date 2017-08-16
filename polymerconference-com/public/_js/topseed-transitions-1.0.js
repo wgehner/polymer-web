@@ -4,66 +4,147 @@ console.log('transitions loaded')
 
 var TR = {
 
-	coverUp: function(cont, contb, evt, duration){
-		var $cont = $(cont)
-		var $contb = $(contb)
+	processing: false
 
-		// compute viewport
-		var wi = ' '+$(window).width()+'px'
-		var he = ' '+$(window).height() + 'px'
-		var v_offset = '-'+he
-		var fr = 'rect(0px,'+wi+','+he+', 0px)'
-		console.log('fr: '+fr)
 
-		//clone, wrap and re-attach
-		var $firstSl = $cont.children()
-		$firstSl = $firstSl.clone()
-		$firstSl.find().remove('script')//script no work w/ split
+	, show: function (cont, evt){
+		$(cont).html(evt.$new)
+	}
 
-		//var $cloneSl = $firstSl.clone()
-		$contb.append($firstSl)
-		$firstSl.wrapAll('<div id="firstSl" class="firstSl"/>')
+	, _clone: function($parent, $newParent, wrapperId){
 
-		// point to clone and wrap
-		//$contb.append($cloneSl)
-		//$cloneSl.wrapAll('<div id="cloneSl" class="cloneSl"/>')
-		$cont.empty()
-		//$cont.html(evt.$new)
+		var $clone = $parent.children().clone()
+		$clone.find().remove('script')//we're animating display version only
+		$newParent.append($clone)
+		var wrapper = $(document.createElement('div')).attr('id', wrapperId).attr('class', wrapperId)
+		$clone.wrapAll(wrapper)
+	}
 
-		//css clip computed
-		var clip = $('#firstSl')
-		clip.css('clip', fr) // clip it
+	, _clip: function(wrapperId, right, bottom, left, top){
+		var frame = 'rect('+(left||'0px')+' '+right+' '+bottom+' '(top||'0px')+')'
+		var clip = $('#'+wrapperId)
+		clip.css('clip', frame) // clip it
 		clip.css('position','absolute')
 		clip.css('z-index', 8)
 		clip.css('top', '0px')
-		clip.css('width', wi)
-		clip.css('min-height', he)
-		$('#firstSl *').css('min-height', he)
-		clip.css('background','gray')
+		clip.css('left', '0px')
+		clip.css('width', $(window).width()+'px') 
+		clip.css('min-height', $(window).height()+'px') 
+		return clip
+	}
 
-		//clip.transition({y: v_offset, easing: 'easeOutCubic', duration: duration})
-		clip.transition({y: '300px', easing: 'easeOutCubic', duration: duration})
+	, uncoverDown: function(cont, contb, evt, duration){
+		TR._uncover(cont, contb, evt, duration, 'down')
+	}
+
+	, uncoverUp: function(cont, contb, evt, duration){
+		TR._uncover(cont, contb, evt, duration, 'up')
+	}
+
+	, uncoverLeft: function(cont, contb, evt, duration){
+		TR._uncover(cont, contb, evt, duration, 'left')
+	}
+
+	, uncoverRight: function(cont, contb, evt, duration){
+		TR._uncover(cont, contb, evt, duration, 'right')
+	}
+
+	, _uncover: function(cont, contb, evt, duration, direction){
+		if (TR.processing) return
+		TR.processing = true
+
+		var $cont = $(cont)
+		var $contb = $(contb)
+
+		if (evt.fromHref == evt.toHref) {	
+			$cont.html(evt.$new) //just refresh content, optional
+			TR.processing = false
+			return
+		}
 		
-		//$('#cloneSl').transition({x: half, easing: 'easeOutCubic', duration: speed})
+		TR._clone($cont, $contb, 'firstSl')
+
+		var wi = $(window).width()+'px'
+		var he = $(window).height()+'px'
+
+		var $clip = TR._clip('firstSl', wi, he)
+		$clip.css('background-color','white')
+
+		$cont.html(evt.$new)
+
+		switch (direction){
+			case 'down': $clip.transition({y: he, easing: 'easeOutCubic', duration: duration}); break
+			case 'up': $clip.transition({y: '-'+he, easing: 'easeOutCubic', duration: duration}); break
+			case 'right': $clip.transition({x: wi, easing: 'easeOutCubic', duration: duration}); break
+			case 'left': $clip.transition({x: '-'+wi, easing: 'easeOutCubic', duration: duration}); break
+		}
+
 		setTimeout(function(){ 
-			//console.log(':cleanup')
-			$contb.empty()
-		}, duration)
+			$contb.empty() 
+			TR.processing = false
+		}, duration) //cleanup
+	}
 
+	, coverDown: function(cont, contb, evt, duration){
+		TR._cover(cont, contb, evt, duration, 'down')
+	}
 
+	, coverUp: function(cont, contb, evt, duration){
+		TR._cover(cont, contb, evt, duration, 'up')
+	}
+
+	, coverLeft: function(cont, contb, evt, duration){
+		TR._cover(cont, contb, evt, duration, 'left')
+	}
+
+	, coverRight: function(cont, contb, evt, duration){
+		TR._cover(cont, contb, evt, duration, 'right')
+	}
+
+	, _cover: function(cont, contb, evt, duration, direction){
+		if (TR.processing) return
+		TR.processing = true
+
+		var $cont = $(cont)
+		var $contb = $(contb)
+
+		if (evt.fromHref == evt.toHref) {	
+			$cont.html(evt.$new) //just refresh content, optional
+			TR.processing = false
+			return
+		}
 		
-		/*console.log('in coverUp')
-		var $newCont = $(newCont)
-		$oldCont.css('z-index', 8)
-		$oldCont.css('position', 'absolute')
-		$oldCont.css('top', '0')
+		TR._clone($cont, $contb, 'firstSl')
 
-		
-		$newCont.css('z-index', 9)
-		$newCont.css('top', '100vh')
-		$newCont.html(evt.$new)
-		$newCont.transition({top: 0}, duration, 'easeOutCubic')
-		//$oldCont.empty()*/
+		var wi = $(window).width()+'px'
+		var he = $(window).height()+'px'
+
+		var $clip = TR._clip('firstSl', wi, he)
+		//$clip.css('background-color','white')
+
+		$cont.css('position', 'absolute')
+		switch (direction){
+			case 'down': $cont.css('top', '-'+he); $cont.css('left', '0px'); break
+			case 'up': $cont.css('top', he); $cont.css('left', '0px'); break
+			case 'right': $cont.css('top', '0px'); $cont.css('left', wi); break
+			case 'left': $cont.css('top', '0px'); $cont.css('left', '-'+wi); break
+		}
+		$cont.css('z-index', '9')
+		$cont.css('transform', '') //clear old transforms
+
+		$cont.html(evt.$new)
+
+		switch (direction){
+			case 'down': $cont.transition({y: he, easing: 'easeOutCubic', duration: duration}); break
+			case 'up': $cont.transition({y: '-'+he, easing: 'easeOutCubic', duration: duration}); break
+			case 'right': $cont.transition({x: wi, easing: 'easeOutCubic', duration: duration}); break
+			case 'left': $cont.transition({x: '-'+wi, easing: 'easeOutCubic', duration: duration}); break
+		}
+
+		setTimeout(function(){ 
+			$contb.empty() 
+			TR.processing = false
+		}, duration) //cleanup
 	}
 
 	, fadeIn: function(cont, evt, duration){
@@ -73,71 +154,64 @@ var TR = {
 		$cont.transition({opacity: 1}, duration, 'easeOutCubic')
 	}
 
-	, fadeOut: function(cont, evt, speed, opacity){
+	, fadeOut: function(cont, evt, duration, opacity){
 		var $cont = $(cont)
-		$cont.transition({opacity: opacity||.3}, speed, 'linear')
+		$cont.transition({opacity: opacity||.3}, duration, 'linear')
 	}
 
 
-	, pgSplit: function($cont_, evt, speed) {
-		//console.log('spliting:')
-		//$('#content-wrapper').fadeTo(1,.2)//hide
-		//$('#content-wrapper').fadeTo(speed/2,1)
+	, splitVerticalOut: function(cont, contb, evt, duration) {
 
+		if (TR.processing) return
+		TR.processing = true
+
+		var $cont = $(cont)
+		var $contb = $(contb)
+		
 		// compute endpoints math to split screen
-		var half = $(window).width() / 2
-		var he  = $(window).height() + 'px, ' //
-		var wid = ' ' + half*2 + 'px, ' //
-		var lft = '-' + half + 'px '
-		half = half + 'px'
-		var fr = 'rect(0px, ' + half + ', ' + he + ' 0px)'
-		var cr = 'rect(0px, ' + wid  + he + half + ')'
+		var nwi = $(window).width()
+		var wi = nwi+'px'
+		var hwi = (nwi / 2) + 'px'
+		var he  = $(window).height() + 'px'
 
-		console.log('fr: '+fr)
-		console.log('cr: '+cr)
+		var leftRect = 'rect(0px '+hwi+' '+he+' 0px)'
+		var rightRect = 'rect(0px '+wi+' '+he+' '+hwi + ')'
+		
+		TR._clone($cont, $contb, 'firstSl')
+		TR._clone($cont, $contb, 'cloneSl')
 
-		//clone, wrap and re-attach
-		var $firstSl = $cont_.children()
-		$firstSl = $firstSl.clone()
-		$firstSl.find().remove('script')//script no work w/ split
-
-		var $cloneSl = $firstSl.clone()
-		$('#content-wrapper-b').append($firstSl)
-		$firstSl.wrapAll('<div id="firstSl" class="firstSl"/>')
-
-		// point to clone and wrap
-		$('#content-wrapper-b').append($cloneSl)
-		$cloneSl.wrapAll('<div id="cloneSl" class="cloneSl"/>')
-		$cont_.empty()
+		$cont.html(evt.$new)
 
 		// =============================================================
 		//css clip computed
-		$('#firstSl').css('clip', fr) // clip it
-		$('#firstSl').css('position','absolute')
-		$('#firstSl').css('z-index',8)
-		$('#firstSl').css('top', '50.4px')
-		$('#firstSl').css('min-height', he)
-		$('#firstSl *').css('min-height', he)
-		$('#firstSl').css('background','gray')
-
-		$('#cloneSl').css('clip', cr)
-		$('#cloneSl').css('position','absolute')
-		$('#cloneSl').css('z-index', 9)
-		$('#cloneSl').css('top', '50.4px')
-		$('#cloneSl').css('min-height', he)
-		$('#cloneSl *').css('min-height', he)
-		$('#cloneSl').css('background','gray')
+		var leftClip = $('#firstSl')
+		leftClip.css('clip', leftRect) // clip it
+		leftClip.css('position','absolute')
+		leftClip.css('z-index', 8)
+		leftClip.css('top', '0px')
+		leftClip.css('left', '0px')
+		leftClip.css('width', wi)
+		leftClip.css('min-height', he)
+		leftClip.css('background-color','white')
+		leftClip.css('transform', '')
 		
+		var rightClip = $('#cloneSl')
+		rightClip.css('clip', rightRect)
+		rightClip.css('position','absolute')
+		rightClip.css('z-index', 10)
+		rightClip.css('top', '0px')
+		rightClip.css('left', '0px')
+		rightClip.css('width', wi)
+		rightClip.css('min-height', he)
+		rightClip.css('background-color','white')
+		rightClip.css('transform', '')
 
-		//$('#content-wrapper0').fadeTo(speed*3,.7)
-		$('#firstSl').transition({x: lft, easing: 'easeOutCubic', duration: speed})
-		$('#cloneSl').transition({x: half, easing: 'easeOutCubic', duration: speed})
+		leftClip.transition({x: '-'+hwi, easing: 'easeOutCubic', duration: duration})
+		rightClip.transition({x: hwi, easing: 'easeOutCubic', duration: duration})
+
 		setTimeout(function(){ 
-			//console.log(':cleanup')
-			$('#content-wrapper-b').empty()
-			//$('#content-wrapper0').fadeTo(1,1)//show
-		}, speed)
-
+			$contb.empty()
+			TR.processing = false
+		}, duration)
 	}
-
 }
