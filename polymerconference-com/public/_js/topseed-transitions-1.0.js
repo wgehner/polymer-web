@@ -1,7 +1,5 @@
 'use strict'
 
-console.log('transitions loaded')
-
 var TR = {
 
 	processing: false
@@ -21,7 +19,7 @@ var TR = {
 	}
 
 	, _clip: function(wrapperId, right, bottom, left, top){
-		var frame = 'rect('+(left||'0px')+' '+right+' '+bottom+' '(top||'0px')+')'
+		var frame = 'rect('+(left||'0px')+' '+right+' '+bottom+' '+(top||'0px')+')'
 		var clip = $('#'+wrapperId)
 		clip.css('clip', frame) // clip it
 		clip.css('position','absolute')
