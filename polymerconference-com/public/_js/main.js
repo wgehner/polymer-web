@@ -12,8 +12,9 @@ var TM = {
 			, TS.load('/_js/BLX.js') //Support for Message Bus
 			, TS.load('/_js/BDS.js') //Support for Business Data Services (fetch etc)
 			, TS.load('//cdn.jsdelivr.net/jquery.transit/0.9.12/jquery.transit.min.js')
-			, TS.load('/_js/topseed-transitions-1.0.min.js') //page transitions
-			, TS.load('https://rawgit.com/topseed/topseed-turbo/master/release/topseed-turbo-4.2.js')
+			, TS.load('/_js/topseed-transitions-1.1.js') //page transitions
+			//, TS.load('https://rawgit.com/topseed/topseed-turbo/master/release/topseed-turbo-4.2.js')
+			, TS.load('/_js/topseed-turbo-4.3.js')
 		])
 		.then(TM.libsLoaded)
 	}
@@ -27,21 +28,30 @@ var TM = {
 			if (TT.PRE == evt.typ) {
 				//example transitions out:
 				//TR.fadeOut('#content-wrapper', evt, 50, 0)
+				//if (evt.fromHref.indexOf('/speakers/')==-1)
+				//	TR.boxOut('#content-wrapper', '#content-wrapper-b', evt, 300, .85)
 			}
 			if (TT.PAGE === evt.typ) {
 				$('#appbar').removeClass('appbar-hide') //reset appbar visibility
 				$('#appbar').addClass('appbar-show')
 				
+				console.log('pgEvent called')
+
 				//example transitions in:
 				//TR.show('#content-wrapper', evt) //no transition, same as $('#content-wrapper').html(evt.$new)
 				//TR.fadeIn('#content-wrapper', evt, 150) //works
 				if (evt.toHref.indexOf('speakers')>-1)
-					TR.uncoverDown('#content-wrapper', '#content-wrapper-b', evt, 350)
-				//TR.uncoverUp('#content-wrapper', '#content-wrapper-b', evt, 350)
-				//TR.uncoverRight('#content-wrapper', '#content-wrapper-b', evt, 350)
-				//TR.uncoverLeft('#content-wrapper', '#content-wrapper-b', evt, 350)
+				{	
+					//if (evt.back)
+					TR.uncoverDown('#content-wrapper', evt, 350)
+					//else
+					//TR.coverUp('#content-wrapper', evt, 350) //mangles left clone
+				}
+				//TR.uncoverUp('#content-wrapper',, evt, 350)
+				//TR.uncoverRight('#content-wrapper', evt, 350)
+				//TR.uncoverLeft('#content-wrapper', evt, 350)
 				else
-					TR.splitVerticalOut('#content-wrapper', '#content-wrapper-b', evt, 350)
+					TR.splitVerticalOut('#content-wrapper', evt, 350)
 				//$('html, body').scrollTop(0)
 			}
 		})

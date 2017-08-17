@@ -31,35 +31,38 @@ var TR = {
 		return clip
 	}
 
-	, uncoverDown: function(cont, contb, evt, duration){
-		TR._uncover(cont, contb, evt, duration, 'down')
+	, uncoverDown: function(cont, evt, duration){
+		TR._uncover(cont, evt, duration, 'down')
 	}
 
-	, uncoverUp: function(cont, contb, evt, duration){
-		TR._uncover(cont, contb, evt, duration, 'up')
+	, uncoverUp: function(cont, evt, duration){
+		TR._uncover(cont, evt, duration, 'up')
 	}
 
-	, uncoverLeft: function(cont, contb, evt, duration){
-		TR._uncover(cont, contb, evt, duration, 'left')
+	, uncoverLeft: function(cont, evt, duration){
+		TR._uncover(cont, evt, duration, 'left')
 	}
 
-	, uncoverRight: function(cont, contb, evt, duration){
-		TR._uncover(cont, contb, evt, duration, 'right')
+	, uncoverRight: function(cont, evt, duration){
+		TR._uncover(cont, evt, duration, 'right')
 	}
 
-	, _uncover: function(cont, contb, evt, duration, direction){
+	, _uncover: function(cont, evt, duration, direction){
 		if (TR.processing) return
 		TR.processing = true
 
 		var $cont = $(cont)
-		var $contb = $(contb) //(cont, 'unc')
 
-		if (evt.fromHref == evt.toHref) {	
+		if (evt.fromHref == evt.toHref) {
 			$cont.html(evt.$new) //just refresh content, optional
 			TR.processing = false
+			console.log('to is same as from'+evt.fromHref)
 			return
 		}
-		
+
+		var $contb = TR._insertPeer(cont, 'unc')
+
+
 		TR._clone($cont, $contb, 'firstSl')
 
 		var wi = $(window).width()+'px'
@@ -78,33 +81,33 @@ var TR = {
 		}
 
 		setTimeout(function(){ 
-			$contb.empty() //$contb.remove()
 			TR.processing = false
+			$contb.remove() //$contb.empty() 
 		}, duration) //cleanup
 	}
 
-	, coverDown: function(cont, contb, evt, duration){
-		TR._cover(cont, contb, evt, duration, 'down')
+	, coverDown: function(cont, evt, duration){
+		TR._cover(cont, evt, duration, 'down')
 	}
 
-	, coverUp: function(cont, contb, evt, duration){
-		TR._cover(cont, contb, evt, duration, 'up')
+	, coverUp: function(cont, evt, duration){
+		TR._cover(cont, evt, duration, 'up')
 	}
 
-	, coverLeft: function(cont, contb, evt, duration){
-		TR._cover(cont, contb, evt, duration, 'left')
+	, coverLeft: function(cont, evt, duration){
+		TR._cover(cont, evt, duration, 'left')
 	}
 
-	, coverRight: function(cont, contb, evt, duration){
-		TR._cover(cont, contb, evt, duration, 'right')
+	, coverRight: function(cont, evt, duration){
+		TR._cover(cont, evt, duration, 'right')
 	}
 
-	, _cover: function(cont, contb, evt, duration, direction){
+	, _cover: function(cont, evt, duration, direction){
 		if (TR.processing) return
 		TR.processing = true
 
 		var $cont = $(cont)
-		var $contb = $(contb) //(cont, 'cover')
+		var $contb = TR._insertPeer(cont, 'cover')
 
 		if (evt.fromHref == evt.toHref) {	
 			$cont.html(evt.$new) //just refresh content, optional
@@ -140,9 +143,8 @@ var TR = {
 		}
 
 		setTimeout(function(){ 
-			//$contb.empty() 
-			$contb.remove()
 			TR.processing = false
+			$contb.remove() //$contb.empty() 
 		}, duration) //cleanup
 	}
 
@@ -158,14 +160,14 @@ var TR = {
 		$cont.transition({opacity: opacity||.3}, duration, 'linear')
 	}
 
-	, boxOut: function(cont, contb, evt, duration, _scale){
+	, boxOut: function(cont, evt, duration, _scale){
 		if (TR.preprocessing) return
 		TR.preprocessing = true
 
 		setTimeout(function(){
 		
 			var $cont = $(cont)
-			var $contb = $(contb) //(cont, 'bo')
+			var $contb = TR._insertPeer(cont, 'bo')
 
 			var nwi = $(window).width()
 			var nhe  = $(window).height()
@@ -178,7 +180,7 @@ var TR = {
 
 			$clip.transition({scale: _scale}, duration, 'easeOutCubic')
 			setTimeout(function(){ 
-				$contb.empty() //$contb.remove()
+				$contb.remove() //$contb.empty()
 				TR.preprocessing = false
 			}, duration) //cleanup
 		}, 0)
@@ -186,22 +188,23 @@ var TR = {
 
 	, _insertPeer: function(cont, uniqueSuffix) {
 		var contb = cont+'-'+uniqueSuffix
-		var sibling = $(document.createElement('div')).attr('id', contb)
+		var id = cont.substring(1)+'-'+uniqueSuffix //remove leading #
+		var sibling = $(document.createElement('div')).attr('id', id)
 		$(cont).before(sibling)
 		var $contb = $(contb)
 		$contb.css('position','absolute')
-		$contb.css('top','0px')
-		$contb.css('left','0px')
+		$contb.css('top','0x')
+		$contb.css('left','0')
 		return $contb
 	}
 
-	, splitVerticalOut: function(cont, contb, evt, duration) {
+	, splitVerticalOut: function(cont, evt, duration) {
 
 		if (TR.processing) return
 		TR.processing = true
 
 		var $cont = $(cont)
-		var $contb = $(contb) //(cont, 'svo')
+		var $contb = TR._insertPeer(cont, 'svo')
 		
 		// compute endpoints math to split screen
 		var nwi = $(window).width()
@@ -245,7 +248,7 @@ var TR = {
 		rightClip.transition({x: hwi, easing: 'easeOutCubic', duration: duration})
 
 		setTimeout(function(){ 
-			$contb.empty() //$contb.remove()
+			$contb.remove() //$contb.empty()
 			TR.processing = false
 		}, duration)
 	}

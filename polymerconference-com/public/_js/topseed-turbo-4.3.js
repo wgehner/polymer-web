@@ -67,6 +67,7 @@ var TTObj = {
 	, err: null
 	, fromHref: null
 	, toHref: null
+	, back: null
 }
 
 
@@ -84,17 +85,16 @@ var TT = {
 		flyd.on(foo, TT.smoothPg)
 	}
 
-	, startAct: function (toHref, fromHref) {
+	, startAct: function (toHref, fromHref, back) {
 		TT.inAction = true
 		TT._actStarted = new Date().getTime()
-		TT.smoothPg({typ:TT.PRE, toHref:toHref, fromHref:fromHref, $new:toHref}) //$new is for backward compatibility
+		TT.smoothPg({typ:TT.PRE, toHref:toHref, fromHref:fromHref, $new:toHref, back:back}) //$new is for backward compatibility
 	}//()
 
-	, actReady: function ($newContent, $html, toHref, fromHref) {
+	, actReady: function ($newContent, $html, toHref, fromHref, back) {
 		var delta = new Date().getTime() - TT._actStarted
-		TT.smoothPg({typ:TT.PAGE, toHref:toHref, fromHref:fromHref, $new:$newContent, delta:delta, $html:$html})
+		TT.smoothPg({typ:TT.PAGE, toHref:toHref, fromHref:fromHref, $new:$newContent, delta:delta, $html:$html, back:back})
 		TT.inAction=false
-
 	}//()
 
 	, push: function() {
@@ -108,7 +108,7 @@ var TT = {
 			//console.log('pushed', toHref)
 		}
 
-		TT.startAct(toHref, fromHref)//maybe just #sidedrawer
+		TT.startAct(toHref, fromHref, back)//maybe just #sidedrawer
 		var x =  TT.appendQueryString(toHref,{'TT': "\""+TT.ScontentID+"\""} )
 		console.log(x)
 		fetch(x, {
@@ -127,7 +127,7 @@ var TT = {
 
 				var div = $html.find(TT.ScontentID).html()
 
-				TT.actReady(div, $html, toHref, fromHref)
+				TT.actReady(div, $html, toHref, fromHref, back)
 
 			}).catch(function(er) {
 				console.log(er)
