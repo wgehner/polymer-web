@@ -9,18 +9,18 @@ var TR = {
 		$(cont).html(evt.$new)
 	}
 
-	, _clone: function($parent, $newParent, wrapperId){
-
+	, _clone: function($parent, $newParent, wrapperIdSuffix){
 		var $clone = $parent.children().clone()
 		$clone.find().remove('script')//we're animating display version only
 		$newParent.append($clone)
+		var wrapperId = $parent.attr('id')+'-'+wrapperIdSuffix
 		var wrapper = $(document.createElement('div')).attr('id', wrapperId).attr('class', wrapperId)
 		$clone.wrapAll(wrapper)
 	}
 
-	, _clip: function(wrapperId, right, bottom, left, top){
+	, _clip: function($parent, suffix, right, bottom, left, top){
 		var frame = 'rect('+(left||'0px')+' '+right+' '+bottom+' '+(top||'0px')+')'
-		var clip = $('#'+wrapperId)
+		var clip = $('#'+$parent.attr('id')+'-'+suffix)
 		clip.css('clip', frame) // clip it
 		clip.css('position','absolute')
 		clip.css('z-index', 8)
@@ -32,6 +32,7 @@ var TR = {
 	}
 
 	, uncoverDown: function(cont, evt, duration){
+
 		TR._uncover(cont, evt, duration, 'down')
 	}
 
@@ -48,6 +49,9 @@ var TR = {
 	}
 
 	, _uncover: function(cont, evt, duration, direction){
+
+		console.log('uncover.processing'+TR.processing)
+
 		if (TR.processing) return
 		TR.processing = true
 
@@ -62,13 +66,12 @@ var TR = {
 
 		var $contb = TR._insertPeer(cont, 'unc')
 
-
-		TR._clone($cont, $contb, 'firstSl')
+		TR._clone($cont, $contb, 'unc__clone')
 
 		var wi = $(window).width()+'px'
 		var he = $(window).height()+'px'
 
-		var $clip = TR._clip('firstSl', wi, he)
+		var $clip = TR._clip($cont, 'unc__clone', wi, he)
 		$clip.css('background-color','white')
 
 		$cont.html(evt.$new)
@@ -82,7 +85,7 @@ var TR = {
 
 		setTimeout(function(){ 
 			TR.processing = false
-			$contb.remove() //$contb.empty() 
+			$contb.remove() 
 		}, duration) //cleanup
 	}
 
@@ -115,12 +118,12 @@ var TR = {
 			return
 		}
 		
-		TR._clone($cont, $contb, 'firstSl')
+		TR._clone($cont, $contb, 'cover__cl')
 
 		var wi = $(window).width()+'px'
 		var he = $(window).height()+'px'
 
-		var $clip = TR._clip('firstSl', wi, he)
+		var $clip = TR._clip($cont, 'cover__cl', wi, he)
 		//$clip.css('background-color','white')
 
 		$cont.css('position', 'absolute')
@@ -130,8 +133,9 @@ var TR = {
 			case 'right': $cont.css('top', '0px'); $cont.css('left', wi); break
 			case 'left': $cont.css('top', '0px'); $cont.css('left', '-'+wi); break
 		}
-		$cont.css('z-index', '9')
+		$cont.css('z-index', '10')
 		$cont.css('transform', '') //clear old transforms
+		$cont.css('opacity', '1')
 
 		$cont.html(evt.$new)
 
@@ -144,7 +148,8 @@ var TR = {
 
 		setTimeout(function(){ 
 			TR.processing = false
-			$contb.remove() //$contb.empty() 
+			$contb.remove()
+			$cont.css('z-index', '0') 
 		}, duration) //cleanup
 	}
 
@@ -160,27 +165,41 @@ var TR = {
 		$cont.transition({opacity: opacity||.3}, duration, 'linear')
 	}
 
-	, boxOut: function(cont, evt, duration, _scale){
+	, boxOut: function(cont, evt, duration, _scale, topmargin, background_color){
 		if (TR.preprocessing) return
 		TR.preprocessing = true
 
 		setTimeout(function(){
 		
 			var $cont = $(cont)
+
+			if (evt.fromHref == evt.toHref) {	
+				TR.preprocessing = false
+				return
+			}
 			var $contb = TR._insertPeer(cont, 'bo')
 
 			var nwi = $(window).width()
 			var nhe  = $(window).height()
-			TR._clone($cont, $contb, 'firstSl')
+			TR._clone($cont, $contb, 'bo__cl')
+			TR._clone($cont, $contb, 'bo__bg')
 
-			var $clip = TR._clip('firstSl', nwi+'px', (nhe-50.4)+'px', '50.4px')
+			var top = topmargin||0
+
+			var $clip = TR._clip($cont, 'bo__cl', nwi+'px', (nhe-top)+'px', top+'px')
 			$clip.css('background-color','white')
+			$clip.css('z-index','-1')
+			//ff shadow background
+			var $bgclip = TR._clip($cont, 'bo__bg', nwi+'px', (nhe-top)+'px', top+'px')
+			$bgclip.css('background-color', background_color||'black')
+			$bgclip.css('z-index','-2')
+			$bgclip.empty()
 
-			$cont.empty() 
+			$cont.empty()
 
 			$clip.transition({scale: _scale}, duration, 'easeOutCubic')
 			setTimeout(function(){ 
-				$contb.remove() //$contb.empty()
+				$contb.remove()
 				TR.preprocessing = false
 			}, duration) //cleanup
 		}, 0)
@@ -204,6 +223,13 @@ var TR = {
 		TR.processing = true
 
 		var $cont = $(cont)
+
+		if (evt.fromHref == evt.toHref) {	
+			$cont.html(evt.$new) //just refresh content, optional
+			TR.processing = false
+			return
+		}
+
 		var $contb = TR._insertPeer(cont, 'svo')
 		
 		// compute endpoints math to split screen
@@ -215,14 +241,14 @@ var TR = {
 		var leftRect = 'rect(0px '+hwi+' '+he+' 0px)'
 		var rightRect = 'rect(0px '+wi+' '+he+' '+hwi + ')'
 		
-		TR._clone($cont, $contb, 'firstSl')
-		TR._clone($cont, $contb, 'cloneSl')
+		TR._clone($cont, $contb, 'svo__left')
+		TR._clone($cont, $contb, 'svo__right')
 
 		$cont.html(evt.$new)
 
 		// =============================================================
 		//css clip computed
-		var leftClip = $('#firstSl')
+		var leftClip = $(cont+'-svo__left')
 		leftClip.css('clip', leftRect) // clip it
 		leftClip.css('position','absolute')
 		leftClip.css('z-index', 8)
@@ -233,7 +259,7 @@ var TR = {
 		leftClip.css('background-color','white')
 		leftClip.css('transform', '')
 		
-		var rightClip = $('#cloneSl')
+		var rightClip = $(cont+'-svo__right')
 		rightClip.css('clip', rightRect)
 		rightClip.css('position','absolute')
 		rightClip.css('z-index', 10)
@@ -248,7 +274,7 @@ var TR = {
 		rightClip.transition({x: hwi, easing: 'easeOutCubic', duration: duration})
 
 		setTimeout(function(){ 
-			$contb.remove() //$contb.empty()
+			$contb.remove()
 			TR.processing = false
 		}, duration)
 	}

@@ -24,7 +24,8 @@ $(document).ready(function () {
 		console.log('state', state)
 		if (state !== null) {
 			e.preventDefault()
-			var oldUrl = window.location.href
+			var oldUrl = window.document.referrer
+			console.log('back to(state.url)'+(state.url)+' from:'+oldUrl)
 			TT.loadPg(state.url, oldUrl, true)
 		}
 	})//()

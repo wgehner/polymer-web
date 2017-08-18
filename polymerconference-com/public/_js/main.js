@@ -27,31 +27,39 @@ var TM = {
 		TT.handle(function(evt) {
 			if (TT.PRE == evt.typ) {
 				//example transitions out:
-				//TR.fadeOut('#content-wrapper', evt, 50, 0)
-				//if (evt.fromHref.indexOf('/speakers/')==-1)
-				//	TR.boxOut('#content-wrapper', '#content-wrapper-b', evt, 300, .85)
+				if (evt.fromHref.indexOf('/speakers/')==-1 && !evt.back) {	
+					//TR.fadeOut('#content-wrapper', evt, 50, 0)
+					TR.boxOut('#content-wrapper', evt, 300, .87, 50.4, '#616161')
+				}
 			}
 			if (TT.PAGE === evt.typ) {
 				$('#appbar').removeClass('appbar-hide') //reset appbar visibility
 				$('#appbar').addClass('appbar-show')
-				
-				console.log('pgEvent called')
+
+				console.log('pageEvt back:'+evt.back)
+				console.log('pageEvt toHref:'+evt.toHref)
 
 				//example transitions in:
 				//TR.show('#content-wrapper', evt) //no transition, same as $('#content-wrapper').html(evt.$new)
-				//TR.fadeIn('#content-wrapper', evt, 150) //works
-				if (evt.toHref.indexOf('speakers')>-1)
-				{	
-					//if (evt.back)
+				//TR.fadeIn('#content-wrapper', evt, 150) 
+
+				if (evt.back) { //TODO: this could be a forward
 					TR.uncoverDown('#content-wrapper', evt, 350)
-					//else
-					//TR.coverUp('#content-wrapper', evt, 350) //mangles left clone
+					//TR.uncoverUp('#content-wrapper', evt, 350)
+					//TR.uncoverRight('#content-wrapper', evt, 350)
+					//TR.uncoverLeft('#content-wrapper', evt, 350)
 				}
-				//TR.uncoverUp('#content-wrapper',, evt, 350)
-				//TR.uncoverRight('#content-wrapper', evt, 350)
-				//TR.uncoverLeft('#content-wrapper', evt, 350)
-				else
-					TR.splitVerticalOut('#content-wrapper', evt, 350)
+				else {
+					if (evt.fromHref.indexOf('speakers')>-1) { //coming from '/speakers'
+						TR.splitVerticalOut('#content-wrapper', evt, 350)
+					}
+					else { //default
+						TR.coverUp('#content-wrapper', evt, 350)
+						//TR.coverUp('#content-wrapper', evt, 350)
+						//TR.coverRight('#content-wrapper', evt, 350)
+						//TR.coverLeft('#content-wrapper', evt, 350)
+					}
+				}
 				//$('html, body').scrollTop(0)
 			}
 		})
