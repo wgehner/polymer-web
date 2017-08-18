@@ -36,9 +36,6 @@ var TM = {
 				$('#appbar').removeClass('appbar-hide') //reset appbar visibility
 				$('#appbar').addClass('appbar-show')
 
-				console.log('pageEvt back:'+evt.back)
-				console.log('pageEvt toHref:'+evt.toHref)
-
 				//example transitions in:
 				//TR.show('#content-wrapper', evt) //no transition, same as $('#content-wrapper').html(evt.$new)
 				//TR.fadeIn('#content-wrapper', evt, 150) 
