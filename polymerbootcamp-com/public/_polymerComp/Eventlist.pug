@@ -7,7 +7,10 @@ dom-module(id='eventlist-el')
 						b {{item.dateStr}}: 
 						span {{item.location}}
 					td 
-						a.mui-btn.mui-btn--raised(on-click='book') Book Now!
+						template(is='dom-if', if='{{item.status}}')
+							center {{item.status}}
+						template(is='dom-if', if='{{!item.status}}')
+							a.mui-btn.mui-btn--raised(on-click='book') Book Now!
 
 	script.
 		Polymer({

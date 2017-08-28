@@ -1,6 +1,7 @@
 function EventBusiness() {
 
-	const urlSpec = {root:'https://www.polymerbootcamp.com', selectList: '/events.json'}
+	//const urlSpec = {root:'https://www.polymerbootcamp.com', selectList: '/events.json'}
+	const urlSpec = {root:'http://localhost:8070', selectList: '/events.json'}
 
 	var EventDao = BDS.extend({}) 
 
