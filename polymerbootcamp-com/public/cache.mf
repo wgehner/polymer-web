@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # load stable assets once and freeze on client, even if asset changes, it won't ping
-# refresh 8/9/2017
+# refresh 8/28/2017
 
 #index assets
 https://m.appthings.io/favicon.ico
