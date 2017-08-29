@@ -21,7 +21,7 @@ dom-module(id='eventlist-el')
 			}
 
 			, book: function(e){
-				window.open(e.model.item.book, "_blank")
+				window.open(e.model.dataHost.dataHost.item.book, '_blank')
 				return false		
 			}
 		})
