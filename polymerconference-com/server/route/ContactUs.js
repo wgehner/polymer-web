@@ -1,5 +1,5 @@
-const mapi_key = 'key-126702bcf88ba65843c5f14da6887734'
-const mdomain = 'sandbox25285d33bd834001acee0310be42744c.mailgun.org'
+const mapi_key = ''
+const mdomain = ''
 const mailgun = require('mailgun-js')({apiKey: mapi_key, domain: mdomain})
 
 const express = require('express')
